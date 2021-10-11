@@ -1,5 +1,5 @@
 Student: Mykoda Igor
-Group: CE-48
+Group: CE 48
 Subject: CSDT
 
 Project name: DragonGame
