@@ -4,5 +4,5 @@ Subject: CSDT
 
 Project name: DragonGame
 
-HW interface: SPI
+HW interface: I2C
 Data driven format: JSON
