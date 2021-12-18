@@ -25,26 +25,16 @@ public class AirplaneController {
     }
 
     @PostMapping("/{company_id}/add-airplane")
-    public Airplane addAirplane(@PathVariable("company_id") long company_id, @Validated @ModelAttribute("airplane") Airplane airplane, BindingResult result){
+    public List<Airplane> addAirplane(@PathVariable("company_id") long company_id, @Validated @ModelAttribute("airplane") Airplane airplane, BindingResult result){
         if (result.hasErrors()) {
             throw new ValidationException();
         }
         AirCompany airCompany = airCompanyService.readById(company_id);
         Airplane newAirplane = airplaneService.create(airplane);
-       newAirplane.setMyAirCompany(airCompany);
-
-        return newAirplane;
+        List<Airplane> airplanes = airCompany.getMyAirplanes();
+        airplanes.add(newAirplane);
+        return airplanes;
     }
-
-    @PostMapping("/{airplane_id}/change")
-    public Airplane moveAirplanes(@PathVariable("airplane_id") long airplane_id ,  @ModelAttribute("id") long id){
-        Airplane airplane= airplaneService.readById(airplane_id);
-        AirCompany airCompany = airCompanyService.readById(id);
-        airplane.setMyAirCompany(airCompany);
-        Airplane newAirplane = airplaneService.update(airplane);
-        return newAirplane;
-    }
-
     @GetMapping("/all")
     public List<Airplane> getAll(){
         List<Airplane> airplanes = airplaneService.getAll();

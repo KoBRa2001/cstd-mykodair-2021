@@ -9,7 +9,6 @@ public interface FlightService {
     Flight create(Flight flight);
     Flight readById(long id);
     Flight update(Flight flight);
-    Flight changeFlightStatus(String status,long id);
     void delete(long id);
     List<Flight> getAll();
     List<Flight> findFlightByStatus(String status ,String name);
