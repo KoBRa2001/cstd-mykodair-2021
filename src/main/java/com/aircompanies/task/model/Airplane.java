@@ -17,8 +17,7 @@ public class Airplane {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Pattern(regexp = "[A-Z][a-z]+",
-            message = "Must start with a capital letter followed by one or more lowercase letters")
+
     @Column(name = "name", nullable = false)
     private String name;
 
@@ -42,7 +41,7 @@ public class Airplane {
     @Column(name = "type")
     private String type;
 
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
 
     @Override
