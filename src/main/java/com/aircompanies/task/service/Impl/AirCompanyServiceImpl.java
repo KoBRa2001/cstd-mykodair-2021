@@ -44,8 +44,13 @@ public class AirCompanyServiceImpl implements AirCompanyService {
 
     @Override
     public void delete(long id) {
-        AirCompany airCompany = readById(id);
-        airCompanyRepository.delete(airCompany);
+        if (id != null) {
+            AirCompany airCompany = readById(id);
+            airCompanyRepository.delete(airCompany);
+        }
+        else {
+            new EntityNotFoundException("AirCompany id can not be null"));
+        }
     }
 
     @Override
