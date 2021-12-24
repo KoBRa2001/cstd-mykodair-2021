@@ -51,8 +51,13 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public void delete(long id) {
-        Flight flight = readById(id);
-        flightRepository.delete(flight);
+        if(id != null) {
+            Flight flight = readById(id);
+            flightRepository.delete(flight);
+        }
+        else {
+            new EntityNotFoundException("Flight id can not be null"));
+        }
     }
 
     @Override
